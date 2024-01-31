@@ -44,7 +44,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ghcr.io/SpangeJ/docker-ci-automation:${{ github.run_id }}
+          tags: ghcr.io/spangej/docker-ci-automation:${{ github.run_id }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: linux/amd64
@@ -63,7 +63,7 @@ jobs:
             --docker-server=https://ghcr.io \
             --docker-username=${{ github.actor }} \
             --docker-password=${{ secrets.GITHUB_TOKEN }}
-          export TESTING_IMAGE=ghcr.io/SpangeJ/docker-ci-automation:"$GITHUB_RUN_ID"
+          export TESTING_IMAGE=ghcr.io/spangej/docker-ci-automation:"$GITHUB_RUN_ID"
           envsubst < manifests/deployment.yaml  | kubectl apply -f -
           kubectl rollout status deployment myapp
           kubectl exec deploy/myapp -- curl --fail localhost
@@ -72,7 +72,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v5
         with:
-          images: dockerspange/docker-ci-automation,ghcr.io/SpangeJ/docker-ci-automation
+          images: dockerspange/docker-ci-automation,ghcr.io/spangej/docker-ci-automation
           flavor: |
             latest=false
           tags: |
