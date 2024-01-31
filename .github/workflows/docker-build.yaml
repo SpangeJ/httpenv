@@ -33,7 +33,7 @@ jobs:
           push: false
           load: true # Export to Docker Engine rather than pushing to a registry
           tags: ${{ github.run_id }}
-          target: test
+          target: main
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: linux/amd64
@@ -43,7 +43,7 @@ jobs:
         with:
           image-ref: ${{ github.run_id }}
           exit-code: 0
-          format: table 
+          format: table
 
       - name: Docker Metadata for Final Image Build
         id: docker_meta
