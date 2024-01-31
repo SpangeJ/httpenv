@@ -1,6 +1,6 @@
 # kubernetes deployment
 ---
-apiVersion: apps/v1
+apiVersion: nginx/v1
 kind: Deployment
 metadata:
   name: myapp

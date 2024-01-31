@@ -66,7 +66,6 @@ jobs:
           export TESTING_IMAGE=ghcr.io/spangej/docker-ci-automation:"$GITHUB_RUN_ID"
           envsubst < manifests/deployment.yaml  | kubectl apply -f -
           kubectl rollout status deployment myapp
-          kubectl exec deploy/myapp -- apt update && apt install curl -y
           kubectl exec deploy/myapp -- curl --fail localhost
 
       - name: Docker Metadata for Final Image Build
